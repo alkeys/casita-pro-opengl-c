@@ -9,7 +9,7 @@ void rectangulo(float x,float y,int xL,int Ly,float R,float G,float B);
 void triangulo(float x,float y,float l,float R,float G,float B);
 void crearCirculo(float x ,float y ,int r,float R,float G,float B);
 void cruz(float x,float y,int xL,int Ly);
-void lineasAlgoritmos(float x1,float y1,float x2 ,float y2);
+void dda(float x1,float y1,float x2 ,float y2,float R,float G,float B);
 
 
 #endif //CASAPRO_UTIL_H

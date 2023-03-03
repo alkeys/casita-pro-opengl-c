@@ -37,22 +37,73 @@ void iniciar() {
 void iniciarGraficos() {
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0.42, 0.82, 0.82, 1);
- //   crearSol();
-   // mountCrear(0, 100);
-    //calle();
-    //crearCasa();
-   // Carro(100, 100, 50, 40,0.97, 0.25, 0.43);
-    //generarnubes(100, 480, 1, 1, 1);
-   // generarnubes(160, 520, 1, 1, 1);
-   // generarnubes(250, 460, 1, 1, 1);
-   // generarnubes(350, 450, 1, 1, 1);
-   // generarnubes(500, 450, 1, 1, 1);
-   // generarnubes(240, 400, 1, 1, 1);
- //   arboles(50, 100, 10);
-   // arboles(300, 100, 10);
-    lineasAlgoritmos(100,100,600,600);
+    crearSol();
+    mountCrear(0, 100);
+    calle();
+    crearCasa();
+    Carro(100, 100, 50, 40, 0.97, 0.25, 0.43);
+    generarnubes(100, 480, 1, 1, 1);
+    generarnubes(160, 520, 1, 1, 1);
+    generarnubes(250, 460, 1, 1, 1);
+    generarnubes(350, 450, 1, 1, 1);
+    generarnubes(500, 450, 1, 1, 1);
+    generarnubes(240, 400, 1, 1, 1);
+    arboles(50, 100, 10);
+    arboles(300, 100, 10);
+    carnetDibujo(320,100);
     glFlush();
 }
+
+void carnetDibujo(float x, float y) {
+    //la altura sera de 15pix max
+    //leta A
+    dda(x,y,x+5,y+15,0,0,0);
+    dda(x+5,y+15,x+10,y,0,0,0);
+    dda(x+2.5,y+7.5,x+8.5,y+7,0,0,0);
+    //
+    //letra m
+    x+=15;
+    dda(x,y,x+5,y+15,0,0,0);
+    dda(x+5,y+15,x+10,y+7,0,0,0);
+    dda(x+10,y+7,x+15,y+15,0,0,0);
+    dda(x+15,y+15,x+20,y,0,0,0);
+    //
+    //uno
+    x+=30;
+    dda(x,y,x,y+15,0,0,0);
+    dda(x-5,y,x+5,y,0,0,0);
+    dda(x-5,y+7,x,y+15,0,0,0);
+    //
+    //ocho
+    x+=10;
+    dda(x,y,x,y+15,0,0,0);
+    dda(x,y+15,x+10,y+15,0,0,0);
+    dda(x,y,x+10,y,0,0,0);
+    dda(x,y+7,x+10,y+7,0,0,0);
+    dda(x+10,y,x+10,y+15,0,0,0);
+    //
+    //cero
+    x+=15;
+    dda(x,y,x,y+15,0,0,0);
+    dda(x,y+15,x+10,y+15,0,0,0);
+    dda(x,y,x+10,y,0,0,0);
+    dda(x+10,y,x+10,y+15,0,0,0);
+    //
+    //cero
+    x+=15;
+    dda(x,y,x,y+15,0,0,0);
+    dda(x,y+15,x+10,y+15,0,0,0);
+    dda(x,y,x+10,y,0,0,0);
+    dda(x+10,y,x+10,y+15,0,0,0);
+    //
+    //siete
+    x+=20;
+    dda(x,y,x,y+15,0,0,0);
+    dda(x-5,y+10,x,y+15,0,0,0);
+    dda(x-5,y+7,x+5,y+7,0,0,0);
+    //
+}
+
 
 void arboles(float x, float y, int l) {
     rectangulo(x, y, l * 2, l * 4, 0.46, 0.34, 0.28);
@@ -70,19 +121,19 @@ void mountCrear(float x, float y) {
     /**
      * Congettura di Collatz para las montañas
      */
-        do {
-        glVertex2f(x,y+n+250);
+    do {
+        glVertex2f(x, y + n + 250);
         if (n % 2 == 0) {
             //par se divide ente 2
-            n=n/2;
-        } else{
+            n = n / 2;
+        } else {
             //impar multiplica por3 y se le suma 1
-            n=(n*3)+1;
+            n = (n * 3) + 1;
         }
 
-        x+=40;
+        x += 40;
     } while (n != 1);
-    glVertex2f(600,0);
+    glVertex2f(600, 0);
     glEnd();
 
 }
@@ -128,7 +179,7 @@ void crearCasa() {
 ////////////////////////////////
 }
 
-void Carro(float x, float y, int xL, int yL,float R,float G,float B) {
+void Carro(float x, float y, int xL, int yL, float R, float G, float B) {
     int cabesaL = xL + 50;
     //carroceria
     rectangulo(x, y, xL + 50, yL, R, G, B);
@@ -188,12 +239,12 @@ void generarHumoCasa(float x, float y, int cantLineas, float R, float G, float B
 
 
 void generarnubes(float x, float y, float R, float G, float B) {
-    float a=9;
-    float b=3;
-    for(float theta = 0; theta < 100; theta += 10) {
-        float fx = x + a * cos(theta)*3;
-        float fy = y + b * sin(theta)*3;
-        crearCirculo(fx,fy,20,R,G,B);
+    float a = 9;
+    float b = 3;
+    for (float theta = 0; theta < 100; theta += 10) {
+        float fx = x + a * cos(theta) * 3;
+        float fy = y + b * sin(theta) * 3;
+        crearCirculo(fx, fy, 20, R, G, B);
 
     }
 }

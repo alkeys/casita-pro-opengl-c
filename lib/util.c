@@ -84,7 +84,10 @@ void crearCirculo(float x, float y, int r, float R, float G, float B) {
     glEnd();
 }
 
-void lineasAlgoritmos(float x1, float y1, float x2, float y2) {
+void dda(float x1, float y1, float x2, float y2,float R,float G,float B) {
+    /**
+     * algoritmo dda echo en c para lineas
+     */
     float dx = x2 - x1;
     float dy = y2 - y1;
     float pasos,xIncrementos, yIncrementos, x = x1, y = y1;
@@ -92,7 +95,8 @@ void lineasAlgoritmos(float x1, float y1, float x2, float y2) {
     xIncrementos = dx / pasos;
     yIncrementos = dy / pasos;
     glBegin(GL_POINTS);
-    for (int i = 0; i < pasos; ++i) {
+    glColor3f(R, G, B);
+    for (float i = 0; i < pasos; i++) {
         glVertex2f(x,y);
         x+=xIncrementos;
         y+=yIncrementos;

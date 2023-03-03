@@ -18,5 +18,5 @@ void mountCrear(float  x,float y);
 void arboles(float x,float y,int l);
 void generarnubes(float x, float y, float R, float G, float B);
 void generarHumoCasa(float x, float y, int cantLineas, float R, float G, float B);
-
+void carnetDibujo(float x, float y);
 #endif //CASAPRO_VENTANA_H
